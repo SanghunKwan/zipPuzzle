@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TileAnimator
+  m_Controller: {fileID: 9100000, guid: 1f40e401c28039e488d262de0f209843, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0f35baf5908a5d64f92f0ebc399963aa, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 724fa1cfad176904ea4b9138a8025107, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d197f5c3075d2db41a336ed429334912, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3b2f511fc9eb3b144837ee8ace89a8d6, type: 2}

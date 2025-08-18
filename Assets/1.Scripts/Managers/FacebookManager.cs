@@ -1,13 +1,16 @@
 using UnityEngine;
 using Facebook.Unity;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class FacebookManager : MonoBehaviour
 {
     [SerializeField] UILoginInteractive _loginInteractive;
+    [SerializeField] DataLoader _loader;
 
     public void InitFacebook()
     {
+        _loader.InitLoad();
         if (!FB.IsInitialized)
         {
             Debug.Log("초기화 시작");
@@ -35,7 +38,6 @@ public class FacebookManager : MonoBehaviour
         FB.ActivateApp();
         string[] param = { "public_profile", "email" };
         FB.LogInWithPublishPermissions(param, LoginComplete);
-
     }
     void LoginComplete(ILoginResult result)
     {
@@ -83,6 +85,15 @@ public class FacebookManager : MonoBehaviour
             string tempStr = userInfo["id"].ToString();
             //tempStr 출력
             _loginInteractive.SetId(tempStr);
+            if (_loader.GetData(tempStr, out int record))
+            {
+                _loginInteractive.SetRecord(record.ToString());
+            }
+            else
+            {
+                _loginInteractive.SetRecord("기록이 없습니다.");
+            }
+            _loader.HandOverData();
         }
 
     }
@@ -102,5 +113,10 @@ public class FacebookManager : MonoBehaviour
     {
         FB.LogOut();
         _loginInteractive.SetLogInOut(false);
+    }
+
+    public void OnGameStartBtn()
+    {
+        SceneManager.LoadScene(1);
     }
 }

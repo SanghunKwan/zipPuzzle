@@ -6,6 +6,7 @@ public class UILoginInteractive : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _id;
     [SerializeField] TextMeshProUGUI _name;
+    [SerializeField] TextMeshProUGUI _beforeRecord;
     [SerializeField] RawImage _picture;
 
     GameObject _logInObject;
@@ -39,5 +40,9 @@ public class UILoginInteractive : MonoBehaviour
     public void SetImage(Texture2D texture)
     {
         _picture.texture = texture;
+    }
+    public void SetRecord(in string record)
+    {
+        _beforeRecord.text = record;
     }
 }
