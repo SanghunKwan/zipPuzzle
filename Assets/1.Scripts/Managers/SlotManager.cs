@@ -207,8 +207,6 @@ public class SlotManager : MonoBehaviour
     void SlideSlot(int rowIndex, int columnIndex, int rowValue, int columnValue)
     {
         _movingSlot = _slots[rowIndex, columnIndex];
-        if (_movingSlot == null)
-            return;
 
         _movingSlotIndex = (rowIndex, columnIndex);
         _movingSlot.SetHighlight();
@@ -222,6 +220,11 @@ public class SlotManager : MonoBehaviour
             _targetSlotIndex = (newRowIndex, newColumnIndex);
             _beforeMovingSlotPosition = _movingSlot.transform.position;
             _movingSlot.transform.SetSiblingIndex(_movingSlot.transform.parent.childCount - 1);
+        }
+        else
+        {
+            _movingSlot = null;
+
         }
     }
 
