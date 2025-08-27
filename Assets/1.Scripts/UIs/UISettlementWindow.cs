@@ -1,7 +1,6 @@
 using DefineCoroutine;
 using System.IO;
 using TMPro;
-using UnityEditor.Overlays;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,7 +56,11 @@ public class UISettlementWindow : MonoBehaviour
             _scoreText.enabled = true;
         }));
 
-        if (!isClear) return;
+        if (!isClear)
+        {
+            SaveData();
+            return;
+        }
 
         StartCoroutine(CoroutineUtility.DelayAction(3, () =>
         {
@@ -89,7 +92,7 @@ public class UISettlementWindow : MonoBehaviour
         _addDigits = (addScore == 0) ? 1 : Mathf.FloorToInt(Mathf.Log10(Mathf.Abs(addScore)) + 1);
         if (addScore < 0) _addDigits *= -1;
 
-        _popUpTimeText.text = (spareTime % 60).ToString("D2") + ":" + (spareTime / 60).ToString("D2");
+        _popUpTimeText.text = (spareTime / 60).ToString("D2") + ":" + (spareTime % 60).ToString("D2");
         _popUpScoreText.text = addScore.ToString("N0");
         SaveData();
         _popUpScoreText.enabled = true;

@@ -47,9 +47,9 @@ public class DataLoader : MonoBehaviour
         record = -1;
         if (_dataList == null)
         {
-            Debug.LogError("데이터가 없습니다.");
+            Debug.Log("데이터가 없습니다.");
 
-
+            _dataList = new RecordDataList();
             _dataList.recordDataList = new List<RecordData>();
             _dataList.recordDataList.Add(new RecordData { _id = idStr, _records = 0 });
 
